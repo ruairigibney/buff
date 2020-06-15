@@ -1,0 +1,21 @@
+version: '3.3'
+services:
+  db:
+    image: mysql:latest
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'buffdb'
+      MYSQL_USER: 'test@buff'
+      MYSQL_PASSWORD: 'buff1'
+      MYSQL_ROOT_PASSWORD: 'buffroot1'
+    ports:
+      - '3306:3306'
+    expose:
+      - '3306'
+    volumes:
+      - buff-db:/var/lib/mysql
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+  
+# Names our volume
+volumes:
+  buff-db:

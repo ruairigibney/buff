@@ -1,0 +1,2 @@
+# buff app config
+DSN: "test@buff:buff1@tcp(localhost:3306)/buffdb"

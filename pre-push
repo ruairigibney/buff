@@ -1,0 +1,20 @@
+run_gotest="go test ./... -v --cover -failfast"
+run_gofmt="gofmt -d internal/../."
+
+printf "Running gotest...\n"
+$run_gotest
+RESULTGOTEST=$?
+if [ $RESULTGOTEST -ne 0 ]; then
+  echo >&2 "$RESULTGOTEST"
+  echo >&2 "FAILED $run_gotest"
+  exit 1
+fi
+
+printf "Running gofmt...\n"
+$run_gofmt
+RESULTGOFMT=$?
+if [ $RESULTGOFMT -ne 0 ]; then
+  echo >&2 "$RESULTGOFMT"
+  echo >&2 "FAILED $run_gofmt"
+  exit 1
+fi
